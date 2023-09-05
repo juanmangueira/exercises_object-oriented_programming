@@ -1,8 +1,8 @@
 class Atleta
 {
 private:
-    int acertos_;
     int tentativas_;
+    int acertos_;
     float percentual_;
 
     void calcular();
