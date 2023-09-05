@@ -7,6 +7,8 @@ private:
 
     void calcular();
 public:
+    Atleta(int tentativas, int acertos);
+    ~Atleta();
     void exibir();
     Atleta acumular(int tentativas, int acertos);
 };
