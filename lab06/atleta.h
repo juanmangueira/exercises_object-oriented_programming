@@ -7,10 +7,10 @@ private:
 
     void calcular();
 public:
-    Atleta(int tentativas, int acertos);
+    Atleta();
     ~Atleta();
+    void acumular(int tentativas, int acertos);
     void exibir();
-    Atleta acumular(int tentativas, int acertos);
 };
 
 inline void Atleta::calcular()
