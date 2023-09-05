@@ -1,32 +1,32 @@
 #include <iostream>
+#include "atleta.h"
 using namespace std;
 
-struct Atleta
+Atleta::Atleta()
 {
-    int acertos;
-    int tentativas;
-    float percentual;
-};
-
-void calcular(Atleta& atl)
-{
-    if (atl.tentativas!= 0)
-        atl.percentual = 100.0f * atl.acertos / atl.tentativas;
-    else
-        atl.percentual = 0;
+    tentativas_ = 0;
+    acertos_ = 0;
+    percentual_ = 0;
 }
 
-void exibir(const Atleta& atl)
+Atleta::~Atleta()
 {
-    cout << "Acertos: " << atl.acertos << " ";
-    cout << "   Tentativas: " << atl.tentativas << " ";
-    cout << "   Percentual: " << atl.percentual << " ";
+
 }
 
-Atleta& acumular(Atleta& soma, const Atleta& atl)
+void Atleta::acumular(int tentativas, int acertos)
 {
-    soma.tentativas += atl.tentativas;
-    soma.acertos += atl.acertos;
-    calcular(soma);
-    return soma;
+    tentativas_ += tentativas;
+    acertos_ += acertos;
+    calcular();
+}
+
+void Atleta::exibir()
+{
+    cout << fixed;
+    cout.precision(2);
+
+    cout    << "Acertos: " << acertos_ << "\n"
+            << "Tentativas: " << tentativas_ << "\n"
+            << "Percentual: " << percentual_ << "\n";
 }
