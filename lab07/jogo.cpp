@@ -8,17 +8,17 @@ using namespace std;
 
 Jogo::Jogo()
 {
-    nome = "";
-    preco = custo = 0.0f;
-    horas = 0;
+    nome_ = "";
+    preco_ = custo_ = 0.0f;
+    horas_ = 0;
 }
 
 Jogo::Jogo(const string& titulo, float valor, int tempo)
 {
-    nome = titulo;
-    preco = valor;
-    horas = tempo;
-    custo = valor;
+    nome_ = titulo;
+    preco_ = valor;
+    horas_ = tempo;
+    custo_ = valor;
     calcular();
 }
 
@@ -28,22 +28,27 @@ Jogo::~Jogo()
 
 const Jogo& Jogo::comparar(const Jogo& jogo) const
 {
-    if (jogo.horas > horas)
-        return jogo;
+    return maisJogado(*this, jogo);
+}
+
+const Jogo& maisJogado(const Jogo& jogo1, const Jogo& jogo2)
+{
+    if (jogo1.horas() > jogo2.horas())
+        return jogo1;
     else
-        return *this;
+        return jogo2;
 }
 
 
 void Jogo::atualizar(float valor)
 {
-    preco = valor;
+    preco_ = valor;
     calcular();
 }
 
 void Jogo::jogar(int tempo)
 {
-    horas = horas + tempo;
+    horas_ = horas_ + tempo;
     calcular();
 }
 
@@ -52,10 +57,10 @@ void Jogo::exibir() const
     cout << fixed;
     cout.precision(2);
 
-    cout << nome << " R$"
-        << preco << " "
-        << horas << "h = R$"
-        << custo << "/h\n";
+    cout << nome_ << " R$"
+        << preco_ << " "
+        << horas_ << "h = R$"
+        << custo_ << "/h\n";
 }
 
 // -----------------------------------------------
